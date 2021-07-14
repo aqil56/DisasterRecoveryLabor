@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<h1>List:</h1>
+<body>
+<ul>
+    {% for user in list %}
+    <li><b>ID:</b> {{ user.id }}</li>
+    <li><b>First Name:</b> {{ user.firstname }}</li>
+    <li><b>Last Name:</b> {{ user.lastname }}</li>
+    <li><b>Salary:</b> {{ user.salary }}</li>
+    <li><b>Department:</b> {{ user.department }}</li>
+    {% endfor %}
+</ul>
+</body>
+</html>
