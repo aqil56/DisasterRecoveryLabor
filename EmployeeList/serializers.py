@@ -7,11 +7,11 @@ class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee
         fields = (
-                  'id',
-                  'firstname',
-                  'lastname',
-                  'salary',
-                  'department')
+            'id',
+            'firstname',
+            'lastname',
+            'salary',
+            'department')
 
 
 # User Serializer
@@ -19,6 +19,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'email')
+
 
 # Register Serializer
 class RegisterSerializer(serializers.ModelSerializer):
