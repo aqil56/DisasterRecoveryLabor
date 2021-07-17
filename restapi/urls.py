@@ -20,7 +20,11 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from employee import views
 
 router = routers.DefaultRouter()
-router.register(r'employees', views.EmployeeListViewset)
+router.register(r'jobs', views.JobViewset)
+router.register(r'machines', views.MachineViewset)
+router.register(r'timecard', views.TimecardViewset)
+router.register(r'jobentries', views.JobEntryViewset)
+router.register(r'machineentries', views.MachineEntryViewset)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
