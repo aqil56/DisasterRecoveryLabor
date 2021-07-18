@@ -5,11 +5,12 @@ from django.http.response import JsonResponse
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.parsers import JSONParser
 from rest_framework import status, generics, permissions
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from knox.auth import AuthToken
 from EmployeeList.models import Employee
 from EmployeeList.serializers import EmployeeSerializer, UserSerializer, RegisterSerializer
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from knox.views import LoginView as KnoxLoginView
 
 
@@ -25,13 +26,14 @@ class LoginAPI(KnoxLoginView):
 
 
 @api_view(['GET', 'POST', 'DELETE'])
+@permission_classes([IsAuthenticated])
 def employee_list(request):
     if request.method == 'GET':
         employees = Employee.objects.all()
 
-        title = request.query_params.get('title', None)
-        if title is not None:
-            employees = employees.filter(title__icontains=title)
+        firstname = request.query_params.get('firstname', None)
+        if firstname is not None:
+            employees = employees.filter(firstname__icontains=firstname)
 
         employees_serializer = EmployeeSerializer(employees, many=True)
         return JsonResponse(employees_serializer.data, safe=False)
