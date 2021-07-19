@@ -24,7 +24,7 @@ export class ApiService {
   machineEntryUrl = 'http://127.0.0.1:8000/machineentries/';
 
   constructor(private http: HttpClient) {}
-
+  // get
   getJobs(): Observable<any[]> {
     return this.http
       .get<any[]>(this.jobsUrl)
@@ -50,6 +50,7 @@ export class ApiService {
       .get<any[]>(this.machineEntryUrl)
       .pipe(catchError(this.errorHandler));
   }
+  // delete
   deleteJob(id: any): Observable<any> {
     return this.http.delete<any>(this.jobsUrl);
   }
@@ -65,7 +66,7 @@ export class ApiService {
   deleteMachineEntry(id: any): Observable<any> {
     return this.http.delete<any>(this.machineEntryUrl);
   }
-
+  // add
   addJob(newObj: any): Observable<any> {
     return this.http.post<any>(this.jobsUrl, newObj, httpOptions);
   }
@@ -81,7 +82,7 @@ export class ApiService {
   addMachineEntry(newObj: any): Observable<any> {
     return this.http.post<any>(this.machineEntryUrl, newObj, httpOptions);
   }
-
+  // get by id
   getJobById(id: any): Observable<any> {
     const url = `${this.jobsUrl}${id}/`;
     return this.http.get<any>(url);
@@ -102,6 +103,7 @@ export class ApiService {
     const url = `${this.machineEntryUrl}${id}/`;
     return this.http.get<any>(url);
   }
+  // update
   updateJob(updateObj: any) {
     const url = `${this.jobsUrl}${updateObj.id}/`;
     return this.http.put<any>(url, updateObj, httpOptions);
@@ -122,7 +124,7 @@ export class ApiService {
     const url = `${this.machineEntryUrl}${updateObj.id}/`;
     return this.http.put<any>(url, updateObj, httpOptions);
   }
-
+  // error
   errorHandler(error: HttpErrorResponse) {
     return throwError(error.message || 'Server Error');
   }

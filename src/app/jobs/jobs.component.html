@@ -1,1 +1,28 @@
-<p *ngFor="let job of jobs">{{ job.id }}</p>
+<div class="d-flex flex-column justify-content-center">
+  <h1>Jobs List</h1>
+  <div class="d-flex flex-row-reverse">
+    <button routerLink="/admin/addjob/" mat-raised-button color="primary">Add</button>
+  </div>
+  <table *ngIf="jobs.length > 0" class="table table-striped table-bordered table-hover" style="width: 70vw">
+    <thead class="thead-dark">
+      <tr>
+        <th>Code</th>
+        <th>Description</th>
+        <th>Hourly Rate</th>
+        <th>Max Hours</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let job of jobs">
+        <td>{{ job.code }}</td>
+        <td>{{ job.description }}</td>
+        <td>${{ job.hourly_rate }}/hr</td>
+        <td>{{ job.max_hrs }}hrs</td>
+        <td><button [routerLink]="['/admin/updatejob/', job.id]" mat-raised-button color="primary">Edit</button></td>
+        <td><button (click)="deleteJob(job.id)" mat-raised-button color="primary">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

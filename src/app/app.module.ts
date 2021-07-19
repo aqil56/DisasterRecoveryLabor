@@ -18,6 +18,10 @@ import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AddJobComponent } from './add-job/add-job.component';
+import { UpdateJobComponent } from './update-job/update-job.component';
+import { AddMachineComponent } from './add-machine/add-machine.component';
+import { UpdateMachineComponent } from './update-machine/update-machine.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,11 @@ import { HttpClientModule } from '@angular/common/http';
     TimesheetsComponent,
     JobsComponent,
     AdminComponent,
-    HomeComponent
+    HomeComponent,
+    AddJobComponent,
+    UpdateJobComponent,
+    AddMachineComponent,
+    UpdateMachineComponent
   ],
   imports: [
     BrowserModule,

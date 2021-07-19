@@ -1,0 +1,56 @@
+<h1>Add Machine</h1>
+<mat-card>
+  <form [formGroup]="machineForm">
+    <div class="d-flex flex-column align-items-center">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Code</mat-label>
+          <input formControlName="code" matInput placeholder="Enter Code" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <input
+            formControlName="description"
+            matInput
+            placeholder="Enter Description"
+          />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Hourly Rent</mat-label>
+          <input
+            formControlName="hourly_rent"
+            matInput
+            placeholder="Enter Hourly Rent"
+          />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Max Hours</mat-label>
+          <input
+            formControlName="max_hrs"
+            matInput
+            placeholder="Enter Max Hours"
+          />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+    <br />
+    <div class="d-flex justify-content-between">
+      <button (click)="onCancel()" mat-raised-button color="primary">
+        Cancel
+      </button>
+      <button (click)="onSubmit()" mat-raised-button color="primary">
+        Add Machine
+      </button>
+    </div>
+  </form>
+</mat-card>
