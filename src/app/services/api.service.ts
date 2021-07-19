@@ -52,19 +52,24 @@ export class ApiService {
   }
   // delete
   deleteJob(id: any): Observable<any> {
-    return this.http.delete<any>(this.jobsUrl);
+    const url = `${this.jobsUrl}${id}/`;
+    return this.http.delete<any>(url);
   }
   deleteMachine(id: any): Observable<any> {
-    return this.http.delete<any>(this.machineUrl);
+    const url = `${this.machineUrl}${id}/`;
+    return this.http.delete<any>(url);
   }
   deleteTimecard(id: any): Observable<any> {
-    return this.http.delete<any>(this.timecardUrl);
+    const url = `${this.timecardUrl}${id}/`;
+    return this.http.delete<any>(url);
   }
   deleteJobEntry(id: any): Observable<any> {
-    return this.http.delete<any>(this.jobEntryUrl);
+    const url = `${this.jobEntryUrl}${id}/`;
+    return this.http.delete<any>(url);
   }
   deleteMachineEntry(id: any): Observable<any> {
-    return this.http.delete<any>(this.machineEntryUrl);
+    const url = `${this.machineEntryUrl}${id}/`;
+    return this.http.delete<any>(url);
   }
   // add
   addJob(newObj: any): Observable<any> {

@@ -21,7 +21,7 @@
         <td>${{ job.hourly_rate }}/hr</td>
         <td>{{ job.max_hrs }}hrs</td>
         <td><button [routerLink]="['/admin/updatejob/', job.id]" mat-raised-button color="primary">Edit</button></td>
-        <td><button (click)="deleteJob(job.id)" mat-raised-button color="primary">Delete</button></td>
+        <td><button (click)="deleteJob(job)" mat-raised-button color="primary">Delete</button></td>
       </tr>
     </tbody>
   </table>

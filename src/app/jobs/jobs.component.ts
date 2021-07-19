@@ -14,9 +14,9 @@ export class JobsComponent implements OnInit {
   ngOnInit(): void {
     this.apiServ.getJobs().subscribe((jobs) => (this.jobs = jobs));
   }
-  deleteJob(id: any) {
+  deleteJob(job: any) {
     this.apiServ
-      .deleteJob(id)
-      .subscribe(() => (this.jobs = this.jobs.filter((j) => id !== j.id)));
+      .deleteJob(job.id)
+      .subscribe(() => (this.jobs = this.jobs.filter((j) => job.id !== j.id)));
   }
 }
