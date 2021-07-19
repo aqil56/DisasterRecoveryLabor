@@ -16,7 +16,7 @@ class Job(models.Model):
 class Machine(models.Model):
     code = models.CharField(max_length=30)
     description = models.CharField(max_length=30)
-    hourly_rate = models.IntegerField(null=True)
+    hourly_rent = models.IntegerField(null=True)
     max_hrs = models.IntegerField(null=True)
 
     def __str__(self):
@@ -39,6 +39,7 @@ class Timecard(models.Model):
     date = models.DateField(null=True)
     job_entries = models.ManyToManyField(JobEntry)
     machine_entries = models.ManyToManyField(MachineEntry)
+    status = models.CharField(max_length=30, default='pending')
 
     def __str__(self):
         return self.code
