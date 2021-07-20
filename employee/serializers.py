@@ -1,7 +1,11 @@
 from rest_framework import serializers
 
-from employee.models import Job, Machine, Timecard, JobEntry, MachineEntry
+from employee.models import Job, Machine, Timecard, JobEntry, MachineEntry, DRUser
 
+class DRUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DRUser
+        fields = '__all__'
 
 class JobSerializer(serializers.ModelSerializer):
     class Meta:

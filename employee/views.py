@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from rest_framework.response import Response
-from employee.serializers import JobSerializer, MachineSerializer, JobEntrySerializer, MachineEntrySerializer, TimecardSerializer
-from employee.models import Job, Machine, Timecard, JobEntry, MachineEntry
+from employee.serializers import DRUserSerializer, JobSerializer, MachineSerializer, JobEntrySerializer, MachineEntrySerializer, TimecardSerializer
+from employee.models import Job, Machine, Timecard, JobEntry, MachineEntry, DRUser
 from rest_framework import viewsets
 # Create your views here.
 
+class DRUserViewset(viewsets.ModelViewSet):
+    queryset = DRUser.objects.all()
+    serializer_class = DRUserSerializer
 
 class JobViewset(viewsets.ModelViewSet):
     queryset = Job.objects.all()

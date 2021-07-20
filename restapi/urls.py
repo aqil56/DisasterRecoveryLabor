@@ -25,6 +25,7 @@ router.register(r'machines', views.MachineViewset)
 router.register(r'timecard', views.TimecardViewset)
 router.register(r'jobentries', views.JobEntryViewset)
 router.register(r'machineentries', views.MachineEntryViewset)
+router.register(r'user', views.DRUserViewset)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
