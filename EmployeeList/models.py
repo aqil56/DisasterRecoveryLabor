@@ -1,5 +1,4 @@
 from django.db import models
-from rest_framework import Choi
 
 # Create your models here.
 CATEGORY_CHOICES = (
@@ -34,7 +33,7 @@ class User(models.Model):
 
 
 class JobCodeManagement(models.Model):
-    jobcode = models.CharField(max_length=200)
+    jobcode = models.CharField(max_length=200, primary_key=True)
     description = models.CharField(max_length=200)
     hourlyrate = models.DecimalField(decimal_places=2, max_digits=4)
     maxhours = models.IntegerField()
@@ -47,7 +46,7 @@ class JobCodeManagement(models.Model):
 
 
 class MachineManagement(models.Model):
-    machinecode = models.CharField(max_length=200)
+    machinecode = models.CharField(max_length=200, primary_key=True)
     description = models.CharField(max_length=200)
     hourlyrate = models.DecimalField(decimal_places=2, max_digits=4)
     maxhours = models.IntegerField()
@@ -60,7 +59,7 @@ class MachineManagement(models.Model):
 
 
 class TimecardApproval(models.Model):
-    sitecode = models.CharField(max_length=200)
+    sitecode = models.CharField(max_length=200, primary_key=True)
     contractorname = models.CharField(max_length=200)
     totalamount = models.DecimalField(decimal_places=2, max_digits=4)
     totalhours = models.IntegerField()
@@ -74,7 +73,7 @@ class TimecardApproval(models.Model):
 
 
 class TimecardSubmission(models.Model):
-    sitecode = models.CharField(max_length=200)
+    sitecode = models.CharField(max_length=200, primary_key=True)
     contractorname = models.CharField(max_length=200)
     totalamount = models.DecimalField(decimal_places=2, max_digits=4)
     totalhours = models.IntegerField()
