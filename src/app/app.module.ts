@@ -22,6 +22,12 @@ import { AddJobComponent } from './add-job/add-job.component';
 import { UpdateJobComponent } from './update-job/update-job.component';
 import { AddMachineComponent } from './add-machine/add-machine.component';
 import { UpdateMachineComponent } from './update-machine/update-machine.component';
+import { AddTimecardComponent } from './add-timecard/add-timecard.component';
+import { TimecardComponent } from './timecard/timecard.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +40,10 @@ import { UpdateMachineComponent } from './update-machine/update-machine.componen
     AddJobComponent,
     UpdateJobComponent,
     AddMachineComponent,
-    UpdateMachineComponent
+    UpdateMachineComponent,
+    AddTimecardComponent,
+    TimecardComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,8 +60,11 @@ import { UpdateMachineComponent } from './update-machine/update-machine.componen
     MatSidenavModule,
     MatCardModule,
     MatListModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

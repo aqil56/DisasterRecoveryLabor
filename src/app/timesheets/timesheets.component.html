@@ -1,7 +1,7 @@
 <div class="d-flex flex-column justify-content-center">
   <h1>Timesheet {{isAdmin? 'Approval': 'Submission'}}</h1>
   <div *ngIf="!isAdmin" class="d-flex flex-row-reverse">
-    <button mat-raised-button color="primary">
+    <button mat-raised-button color="primary" (click)="addTimecard()">
       Add
     </button>
   </div>
@@ -23,10 +23,10 @@
       <tr *ngFor="let t of timecards">
         <td>{{ t.code }}</td>
         <td>{{ t.contractor }}</td>
-        <td>{{ t.total_hrs }}hrs</td>
-        <td>${{ t.total_amount }}</td>
-        <td *ngIf="!isAdmin">{{t.status == 'pending' ? 'open' : t.status }}</td>
-        <td *ngIf="isAdmin">{{t.status == 'pending' ? 'Review' : t.status }}</td>
+        <td>{{ t.total_hrs? t.total_hrs : 0 }}hrs</td>
+        <td>${{ t.total_amount? t.total_amount : 0}}</td>
+        <td *ngIf="!isAdmin" (click)="open(t.id, t.status)">{{t.status == 'pending' ? 'open' : t.status }}</td>
+        <td *ngIf="isAdmin" (click)="finalize(t.id, t.status)">{{t.status == 'pending' ? 'Review' : t.status }}</td>
       </tr>
     </tbody>
   </table>

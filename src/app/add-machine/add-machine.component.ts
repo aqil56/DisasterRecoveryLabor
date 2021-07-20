@@ -26,8 +26,8 @@ export class AddMachineComponent implements OnInit {
     const newMachine = {
       code: this.machineForm.value['code'],
       description: this.machineForm.value['description'],
-      hourly_rent: parseInt(this.machineForm.value['hourly_rent']),
-      max_hrs: parseInt(this.machineForm.value['max_hrs']),
+      hourly_rent: this.machineForm.value['hourly_rent'],
+      max_hrs: this.machineForm.value['max_hrs'],
     };
 
     this.apiService

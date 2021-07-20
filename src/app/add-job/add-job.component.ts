@@ -26,8 +26,8 @@ export class AddJobComponent implements OnInit {
     const newJob = {
       code: this.jobForm.value['code'],
       description: this.jobForm.value['description'],
-      hourly_rate: parseInt(this.jobForm.value['hourly_rate']),
-      max_hrs: parseInt(this.jobForm.value['max_hrs']),
+      hourly_rate: this.jobForm.value['hourly_rate'],
+      max_hrs: this.jobForm.value['max_hrs'],
     };
 
     this.apiService

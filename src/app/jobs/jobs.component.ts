@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-jobs',
@@ -8,8 +9,10 @@ import { ApiService } from '../services/api.service';
 })
 export class JobsComponent implements OnInit {
   jobs: any[] = [];
+  user = '';
+  isAdmin : boolean= false;
 
-  constructor(private apiServ: ApiService) {}
+  constructor(private apiServ: ApiService, private loginService: LoginService) {}
 
   ngOnInit(): void {
     this.apiServ.getJobs().subscribe((jobs) => (this.jobs = jobs));

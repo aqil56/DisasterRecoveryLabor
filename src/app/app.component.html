@@ -1,6 +1,32 @@
 <div>
   <mat-toolbar>
     <span>Disaster Recovery Application: Timecard Submission</span>
+    <span class="example-spacer"></span>
+    <span *ngIf="loginService.user"
+      >{{ loginService.user }}({{ loginService.getRole() }})</span
+    >
+
+    <div class="dropdown">
+      <button
+        type="button"
+        class="btn btn-link"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <mat-icon>face</mat-icon>
+      </button>
+      <div class="dropdown-menu">
+        <button
+          (click)="logout()"
+          class="dropdown-item"
+          type="button"
+          style="position: relative; right: 20px"
+        >
+          Logout
+        </button>
+      </div>
+    </div>
   </mat-toolbar>
 </div>
 <router-outlet></router-outlet>
