@@ -14,9 +14,11 @@ import { AddTimecardComponent } from './add-timecard/add-timecard.component';
 import { LoginComponent } from './login/login.component';
 import { ContractorGuard } from './services/contractor.guard';
 import { AdminGuard } from './services/admin.guard';
+import { AddUserComponent } from './add-user/add-user.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
+  { path: 'signup', component: AddUserComponent },
   {
     path: 'home',
     component: HomeComponent,

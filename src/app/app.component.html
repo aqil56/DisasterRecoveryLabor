@@ -2,6 +2,9 @@
   <mat-toolbar>
     <span>Disaster Recovery Application: Timecard Submission</span>
     <span class="example-spacer"></span>
+    <span *ngIf="loginService.user === ''"
+      ><a routerLink="signup/">Create User</a></span
+    >
     <span *ngIf="loginService.user"
       >{{ loginService.user }}({{ loginService.getRole() }})</span
     >

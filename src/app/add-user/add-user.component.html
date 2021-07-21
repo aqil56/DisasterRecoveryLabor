@@ -1,0 +1,80 @@
+<div class="d-flex flex-column justify-content-center align-items-center">
+  <h1 class="my-5">Sign Up</h1>
+  <mat-card style="width: 50vw; background-color: #f0f0f0d2">
+    <form [formGroup]="userForm">
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input formControlName="name" matInput placeholder="Enter name" />
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input
+              formControlName="username"
+              matInput
+              placeholder="Enter Username"
+            />
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              type="password"
+              formControlName="password"
+              matInput
+              placeholder="Enter Password"
+            />
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <input
+              type="password"
+              formControlName="confirm_password"
+              matInput
+              placeholder="Enter Password Again"
+            />
+            <div
+              *ngIf="f.confirm_password.touched && f.confirm_password.invalid"
+              class="alert alert-danger"
+            >
+              <div *ngIf="f.confirm_password.errors?.required">
+                Password is required
+              </div>
+              <div *ngIf="f.confirm_password.errors?.confirmedValidator">
+                Password and Confirm Password must MATCH
+              </div>
+            </div>
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Role</mat-label>
+            <mat-select formControlName="role">
+              <mat-option value="admin"> Admin </mat-option>
+              <mat-option value="contractor"> Contractor </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <br />
+      <div class="d-flex justify-content-around">
+        <button (click)="onCancel()" mat-raised-button color="primary">
+          Log In
+        </button>
+        <button (click)="onSubmit()" mat-raised-button color="primary">
+          Sign Up
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>
