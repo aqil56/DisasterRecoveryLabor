@@ -1,0 +1,73 @@
+<h1>Timecard {{ isAdmin ? "Review" : "Details" }}</h1>
+<div *ngIf="timecard" style="width: 70vw">
+  <mat-card class="d-flex justify-content-between">
+    <div class="d-flex flex-column align-items-stretch p-3">
+      <div class="my-3">code: {{ timecard.code }}</div>
+      <div class="my-3">Contractor Name: {{ timecard.contractor }}</div>
+      <div class="my-3">Date: {{ timecard.date }}</div>
+      <h1>Job Entries</h1>
+      <table
+        *ngIf="timecard.job_entries.length > 0"
+        class="table table-striped table-bordered table-hover"
+        style="width: 60vw"
+      >
+        <thead class="thead-dark">
+          <tr>
+            <th>Code</th>
+            <th>Description</th>
+            <th>Hourly Rate</th>
+            <th>Max Hours</th>
+            <th>Hours Worked</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let j of timecard.job_entries">
+            <td>{{ j.job.code }}</td>
+            <td>{{ j.job.description }}</td>
+            <td>${{ j.job.hourly_rate }}/hr</td>
+            <td>{{ j.job.max_hrs }} hrs</td>
+            <td>{{ j.hrs }} hrs</td>
+          </tr>
+        </tbody>
+      </table>
+      <h1>Machine Entries</h1>
+      <table
+        *ngIf="timecard.machine_entries.length > 0"
+        class="table table-striped table-bordered table-hover"
+        style="width: 60vw"
+      >
+        <thead class="thead-dark">
+          <tr>
+            <th>Code</th>
+            <th>Description</th>
+            <th>Hourly Rent</th>
+            <th>Max Hours</th>
+            <th>Hours Used</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let m of timecard.machine_entries">
+            <td>{{ m.machine.code }}</td>
+            <td>{{ m.machine.description }}</td>
+            <td>${{ m.machine.hourly_rent }}/hr</td>
+            <td>{{ m.machine.max_hrs }}hrs</td>
+            <td>{{ m.hrs }}hrs</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-card>
+  <div class="d-flex justify-content-around mt-2">
+    <button (click)="goBack()" mat-raised-button color="primary">
+      Go Back
+    </button>
+    <button
+      *ngIf="isAdmin"
+      (click)="finalize()"
+      mat-raised-button
+      color="primary"
+    >
+      Finalize
+    </button>
+  </div>
+</div>

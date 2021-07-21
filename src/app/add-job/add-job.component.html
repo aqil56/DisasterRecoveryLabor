@@ -1,0 +1,58 @@
+<h1>Add Job</h1>
+<mat-card>
+  <form [formGroup]="jobForm">
+    <div class="d-flex flex-column align-items-center">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Code</mat-label>
+          <input formControlName="code" matInput placeholder="Enter Code" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <input
+            formControlName="description"
+            matInput
+            placeholder="Enter Description"
+          />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Hourly Rate</mat-label>
+          <input
+            type="number"
+            formControlName="hourly_rate"
+            matInput
+            placeholder="Enter Hourly Rate"
+          />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Max Hours</mat-label>
+          <input
+            type="number"
+            formControlName="max_hrs"
+            matInput
+            placeholder="Enter Max Hours"
+          />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+    <br />
+    <div class="d-flex justify-content-between">
+      <button (click)="onCancel()" mat-raised-button color="primary">
+        Cancel
+      </button>
+      <button (click)="onSubmit()" mat-raised-button color="primary">
+        Add Job
+      </button>
+    </div>
+  </form>
+</mat-card>

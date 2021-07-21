@@ -1,0 +1,32 @@
+<div class="d-flex flex-column justify-content-center">
+  <h1>Machines List</h1>
+  <div class="d-flex flex-row-reverse">
+    <button routerLink="/admin/addmachine/" mat-raised-button color="primary">Add</button>
+  </div>
+  <table
+    *ngIf="machines.length > 0"
+    class="table table-striped table-bordered table-hover"
+    style="width: 70vw"
+  >
+    <thead class="thead-dark">
+      <tr>
+        <th>Code</th>
+        <th>Description</th>
+        <th>Hourly Rent</th>
+        <th>Max Hours</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let machine of machines">
+        <td>{{ machine.code }}</td>
+        <td>{{ machine.description }}</td>
+        <td>${{ machine.hourly_rent }}/hr</td>
+        <td>{{ machine.max_hrs }}hrs</td>
+        <td><button [routerLink]="['/admin/updatemachine/', machine.id]" mat-raised-button color="primary">Edit</button></td>
+        <td><button (click)="deleteMachine(machine.id)" mat-raised-button color="primary">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

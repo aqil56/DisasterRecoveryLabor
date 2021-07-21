@@ -1,0 +1,28 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" opened>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/admin/jobs"
+        ><mat-icon>markunread_mailbox</mat-icon>Job code Management<mat-icon
+          >arrow_right</mat-icon
+        ></a
+      >
+      <mat-divider class="my-2"></mat-divider>
+      <a mat-list-item routerLink="/admin/machines"
+        ><mat-icon>settings</mat-icon>Machine Management<mat-icon
+          >arrow_right</mat-icon
+        ></a
+      >
+      <mat-divider class="my-2"></mat-divider>
+      <a mat-list-item routerLink="/admin/timecard_approval/"
+        ><mat-icon>chrome_reader_mode</mat-icon>Timecard Approval<mat-icon
+          >arrow_right</mat-icon
+        ></a
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 100vh" class="d-flex align-items-stretch mx-5">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
