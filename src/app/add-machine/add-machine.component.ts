@@ -22,6 +22,9 @@ export class AddMachineComponent implements OnInit {
     max_hrs: ['', Validators.required],
   });
   ngOnInit(): void {}
+  get f(){
+    return this.machineForm.controls;
+  }
   onSubmit(): void {
     const newMachine = {
       code: this.machineForm.value['code'],

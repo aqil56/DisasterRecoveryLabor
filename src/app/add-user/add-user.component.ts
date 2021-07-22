@@ -7,7 +7,10 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
-import { ConfirmedValidator } from '../services/confirmed.validator';
+import {
+  ConfirmedValidator,
+  UserExists,
+} from '../services/confirmed.validator';
 
 @Component({
   selector: 'app-add-user',
@@ -15,6 +18,7 @@ import { ConfirmedValidator } from '../services/confirmed.validator';
   styleUrls: ['./add-user.component.css'],
 })
 export class AddUserComponent implements OnInit {
+  users: any[] = [];
   userForm: FormGroup = new FormGroup({});
   constructor(
     private formBuilder: FormBuilder,
@@ -23,14 +27,41 @@ export class AddUserComponent implements OnInit {
   ) {
     this.userForm = this.formBuilder.group(
       {
-        name: ['', Validators.required],
-        username: ['', Validators.required],
-        password: ['', Validators.required],
+        name: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(4),
+            Validators.maxLength(15),
+          ],
+        ],
+        username: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(4),
+            Validators.maxLength(15),
+          ],
+        ],
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(8),
+            Validators.maxLength(15),
+            Validators.pattern(
+              '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}'
+            ),
+          ],
+        ],
         confirm_password: ['', Validators.required],
         role: ['', Validators.required],
       },
       {
-        validator: ConfirmedValidator('password', 'confirm_password'),
+        validator: [
+          ConfirmedValidator('password', 'confirm_password'),
+          UserExists('username', this.users),
+        ],
       }
     );
   }
@@ -38,8 +69,17 @@ export class AddUserComponent implements OnInit {
     return this.userForm.controls;
   }
 
-  ngOnInit(): void {}
-  onSubmit(): void {
+  ngOnInit(): void {
+    this.loginService.getUsers().subscribe((users) => (this.users = users));
+  }
+  onSubmit() {
+    for (let user of this.users) {
+      if (user['username'] === this.userForm.value['username']) {
+        alert('Username taken. Please try another Username');
+        this.router.navigate(['/signup']);
+        return;
+      }
+    }
     const newUser = {
       name: this.userForm.value['name'],
       username: this.userForm.value['username'],

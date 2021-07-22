@@ -22,6 +22,9 @@ export class AddJobComponent implements OnInit {
     max_hrs: ['', Validators.required],
   });
   ngOnInit(): void {}
+  get f(){
+    return this.jobForm.controls;
+  }
   onSubmit(): void {
     const newJob = {
       code: this.jobForm.value['code'],

@@ -14,3 +14,19 @@ export function ConfirmedValidator(p: string, cp: string) {
     }
   };
 }
+export function UserExists(user: string, users: any[]) {
+  return (formgroup: FormGroup) => {
+    console.log(users);
+    const control = formgroup.controls[user];
+    if (control.errors && !control.errors.userExists) {
+      return;
+    }
+    for (let u of users) {
+      if (u['username'] === control.value) {
+        control.setErrors({ userExists: true });
+      } else {
+        control.setErrors(null);
+      }
+    }
+  };
+}

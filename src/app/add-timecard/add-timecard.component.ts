@@ -23,7 +23,7 @@ export class AddTimecardComponent implements OnInit {
   ngOnInit() {
     this.timecardForm = this.fb.group({
       code: ['', Validators.required],
-      contractor: ['', Validators.required],
+      contractor: ['', [Validators.required, Validators.minLength(4)]],
       date: ['', Validators.required],
       job_entries: this.fb.array([this.jobEntryRow()]),
       machine_entries: this.fb.array([this.machineEntryRow()]),
@@ -32,6 +32,9 @@ export class AddTimecardComponent implements OnInit {
       .getMachines()
       .subscribe((machines) => (this.machines = machines));
     this.apiService.getJobs().subscribe((jobs) => (this.jobs = jobs));
+  }
+  get f(){
+    return this.timecardForm.controls;
   }
   get jobEntriesArr() {
     return this.timecardForm.get('job_entries') as FormArray;
